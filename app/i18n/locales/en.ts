@@ -1,0 +1,56 @@
+export const en = {
+  header: {
+    home: 'Home',
+    projects: 'Projects',
+    books: 'Books',
+    contact: 'Contact',
+    resume: 'Resume',
+  },
+  footer: {
+    rights: 'All rights reserved.',
+  },
+  home: {
+    title: "Hi, I'm [Your Name]",
+    subtitle: "Full Stack Developer passionate about creating modern web applications with clean, maintainable code",
+    contact: "Contact Me",
+    featured_projects: "Featured Projects",
+    project_1_title: "Project One",
+    project_1_description: "A modern web application built with Next.js and TypeScript",
+    project_2_title: "Project Two",
+    project_2_description: "Full-stack application with real-time features",
+    project_3_title: "Project Three",
+    project_3_description: "Mobile-first responsive design with modern UI",
+    view_all_projects: "View All Projects",
+    name: 'Niverton Ricardo',
+    profession: 'Senior Full-Stack Developer & DevOps Specialist',
+    location: 'Caruaru, Brazil',
+    experience: 'Over 10 years of experience',
+    expertise: 'Expertise in Vue.js, React, Node.js, Rust, and DevOps practices',
+    interests: 'Interests: Reading, gym, meditation, and productivity techniques',
+  },
+  projects: {
+    title: 'Projects',
+    viewProject: 'View Project',
+  },
+  books: {
+    title: 'Books I\'ve Read',
+    categories: {
+      productivity: 'Productivity',
+      selfDevelopment: 'Self-Development',
+      technology: 'Technology',
+    },
+    readMore: 'Read More',
+  },
+  contact: {
+    title: 'Contact Me',
+    name: 'Name',
+    email: 'Email',
+    message: 'Message',
+    send: 'Send Message',
+  },
+  resume: {
+    experience: 'Experience',
+    education: 'Education',
+    skills: 'Skills',
+  },
+}
