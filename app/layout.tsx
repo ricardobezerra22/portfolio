@@ -1,19 +1,13 @@
-import type { Metadata } from "next";
+import { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
-import { LanguageProvider } from "../components/language-provider";
-import { Header } from "../components/header";
+import { Header } from "@/components/header";
 import { ThemeProvider } from "next-themes";
+import { LanguageProvider } from "@/components/language-provider";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
   variable: "--font-geist-sans",
-  weight: "100 900",
-});
-
-const geistMono = localFont({
-  src: "./fonts/GeistMonoVF.woff",
-  variable: "--font-geist-mono",
   weight: "100 900",
 });
 
@@ -28,16 +22,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${geistSans.variable} ${geistMono.variable}`} suppressHydrationWarning>
-      <body className="min-h-screen bg-background font-sans antialiased overflow-x-hidden">
+    <html lang="en" suppressHydrationWarning>
+      <body className={`${geistSans.variable} font-sans min-h-screen flex flex-col`}>
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
           <LanguageProvider>
-            <div className="relative flex min-h-screen flex-col">
+            <div className="flex min-h-screen flex-col">
               <Header />
-              <main className="flex-1 container mx-auto px-4 py-8">
-                <div className="relative z-10">
-                  {children}
-                </div>
+              <main className="flex-1 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-8">
+                {children}
               </main>
             </div>
           </LanguageProvider>
