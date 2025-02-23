@@ -73,6 +73,7 @@ const projects = [
       "Google Cloud Platform",
       "App Engine",
       "Redis",
+      "Git",
     ],
     link: "https://nutriflow.online/",
     date: "2024-11-20",
@@ -132,7 +133,7 @@ export default function Projects() {
       >
         <input
           type="text"
-          placeholder="Filter by name"
+          placeholder={t("projects.filterPlaceholder")}
           value={nameFilter}
           onChange={(e) => setNameFilter(e.target.value)}
           className="px-4 py-2 rounded-full bg-purple-800/50 text-white focus:outline-none focus:ring-2 focus:ring-purple-500 border border-purple-700/50 transition-all duration-200"
@@ -142,8 +143,8 @@ export default function Projects() {
           onChange={(e) => setSortBy(e.target.value)}
           className="px-4 py-2 rounded-full bg-purple-800/50 text-white focus:outline-none focus:ring-2 focus:ring-purple-500 border border-purple-700/50 transition-all duration-200"
         >
-          <option value="name">Sort by Name</option>
-          <option value="date">Sort by Date</option>
+          <option value="name">{t("projects.sortOptions.name")}</option>
+          <option value="date">{t("projects.sortOptions.date")}</option>
         </select>
       </motion.div>
 

@@ -50,6 +50,11 @@ export const en = {
   projects: {
     title: 'Projects',
     viewProject: 'View Project',
+    filterPlaceholder: 'Filter by name',
+    sortOptions: {
+      name: 'Sort by Name',
+      date: 'Sort by Date'
+    }
   },
   books: {
     title: 'Books I\'ve Read, and Recommended!',
