@@ -2,11 +2,8 @@
 
 import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
-import { useTheme } from "next-themes";
 import { useLanguage } from "./language-provider";
 import {
-  MoonIcon,
-  SunIcon,
   GlobeIcon,
   Menu,
   X,
@@ -15,7 +12,6 @@ import {
 import { usePathname } from "next/navigation";
 
 export function Header() {
-  const { theme, setTheme } = useTheme();
   const { language, setLanguage, t } = useLanguage();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isLangMenuOpen, setIsLangMenuOpen] = useState(false);
@@ -102,78 +98,55 @@ export function Header() {
 
         {/* Theme and Language Controls */}
         <div className="flex items-center space-x-3">
-          <div className="flex items-center bg-purple-500/10 rounded-full p-1">
+          <div className="relative" ref={langMenuRef}>
             <button
-              onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-              className={`p-2 rounded-full transition-all duration-300 relative group flex items-center justify-center
-                       ${theme === "dark" ? "bg-purple-500/20" : ""}`}
-              aria-label="Toggle theme"
+              onClick={() => setIsLangMenuOpen(!isLangMenuOpen)}
+              className="flex items-center space-x-2 px-3 py-2 rounded-full 
+                       bg-purple-500/10 hover:bg-purple-500/20 transition-all duration-200"
+              aria-expanded={isLangMenuOpen}
+              aria-haspopup="true"
             >
-              <div
-                className="absolute -bottom-12 left-1/2 transform -translate-x-1/2 px-3 py-1.5 
-                          bg-purple-600 text-white text-sm rounded-lg opacity-0 group-hover:opacity-100 
-                          transition-opacity shadow-lg whitespace-nowrap z-50"
-              >
-                {theme === "dark" ? "Switch to Light" : "Switch to Dark"}
-              </div>
-              {theme === "dark" ? (
-                <SunIcon size={20} className="text-purple-400" />
-              ) : (
-                <MoonIcon size={20} className="text-gray-400" />
-              )}
+              <GlobeIcon size={20} className="text-gray-400" />
+              <span className="text-sm font-medium text-gray-400">
+                {languages.find((l) => l.code === language)?.label}
+              </span>
+              <ChevronDown
+                size={16}
+                className={`text-gray-400 transition-transform duration-200 ${
+                  isLangMenuOpen ? "rotate-180" : ""
+                }`}
+              />
             </button>
 
-            <div className="relative" ref={langMenuRef}>
-              <button
-                onClick={() => setIsLangMenuOpen(!isLangMenuOpen)}
-                className={`p-2 rounded-full transition-all duration-300 flex items-center space-x-2
-                         hover:bg-purple-500/20`}
-                aria-label="Select language"
-                aria-expanded={isLangMenuOpen}
-                aria-haspopup="true"
-              >
-                <GlobeIcon size={20} className="text-gray-400" />
-                <span className="text-sm font-medium text-gray-400">
-                  {languages.find((l) => l.code === language)?.label}
-                </span>
-                <ChevronDown
-                  size={16}
-                  className={`text-gray-400 transition-transform duration-200 ${
-                    isLangMenuOpen ? "rotate-180" : ""
-                  }`}
-                />
-              </button>
-
-              {/* Language Dropdown */}
-              {isLangMenuOpen && (
-                <div
-                  className="absolute right-0 mt-2 w-48 rounded-lg bg-black/95 backdrop-blur-md 
+            {/* Language Dropdown */}
+            {isLangMenuOpen && (
+              <div
+                className="absolute right-0 mt-2 w-48 rounded-lg bg-black/95 backdrop-blur-md 
                              border border-purple-500/20 shadow-lg py-2 animate-fadeIn"
-                >
-                  {languages.map((lang) => (
-                    <button
-                      key={lang.code}
-                      onClick={() => {
-                        setLanguage(lang.code);
-                        setIsLangMenuOpen(false);
-                      }}
-                      className={`w-full text-left px-4 py-2 text-sm transition-colors duration-200
+              >
+                {languages.map((lang) => (
+                  <button
+                    key={lang.code}
+                    onClick={() => {
+                      setLanguage(lang.code);
+                      setIsLangMenuOpen(false);
+                    }}
+                    className={`w-full text-left px-4 py-2 text-sm transition-colors duration-200
                               flex items-center justify-between group
                               ${
                                 language === lang.code
                                   ? "bg-purple-500/20 text-purple-400"
                                   : "text-gray-300 hover:bg-purple-500/10 hover:text-purple-400"
                               }`}
-                    >
-                      {lang.label}
-                      {language === lang.code && (
-                        <div className="h-1.5 w-1.5 rounded-full bg-purple-400" />
-                      )}
-                    </button>
-                  ))}
-                </div>
-              )}
-            </div>
+                  >
+                    {lang.label}
+                    {language === lang.code && (
+                      <div className="h-1.5 w-1.5 rounded-full bg-purple-400" />
+                    )}
+                  </button>
+                ))}
+              </div>
+            )}
           </div>
 
           {/* Mobile Menu Button */}
