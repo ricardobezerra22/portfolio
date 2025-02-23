@@ -11,8 +11,47 @@ const geistSans = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "Portfolio",
-  description: "My personal portfolio",
+  title: "Ricardo Bezerra | Full Stack Developer",
+  description: "Full Stack Developer passionate about creating modern scalable web applications with microservices architecture, microfrontend and serverless technologies.",
+  keywords: ["Full Stack Developer", "Web Development", "React", "Next.js", "Node.js", "TypeScript", "Microservices"],
+  authors: [{ name: "Ricardo Bezerra" }],
+  creator: "Ricardo Bezerra",
+  publisher: "Ricardo Bezerra",
+  robots: "index, follow",
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    url: "https://ricardobezerra.dev",
+    siteName: "Ricardo Bezerra Portfolio",
+    title: "Ricardo Bezerra | Full Stack Developer",
+    description: "Full Stack Developer passionate about creating modern scalable web applications",
+    images: [
+      {
+        url: "/assets/images/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Ricardo Bezerra Portfolio",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Ricardo Bezerra | Full Stack Developer",
+    description: "Full Stack Developer passionate about creating modern scalable web applications",
+    images: ["/assets/images/og-image.png"],
+  },
+  icons: {
+    icon: "/favicon.ico",
+    shortcut: "/favicon-16x16.png",
+    apple: "/apple-touch-icon.png",
+  },
+  manifest: "/site.webmanifest",
+  viewport: {
+    width: "device-width",
+    initialScale: 1,
+    maximumScale: 1,
+  },
+  themeColor: "#000000",
 };
 
 export default function RootLayout({
@@ -21,7 +60,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className="dark" suppressHydrationWarning>
+    <html 
+      lang="en" 
+      className="dark" 
+      suppressHydrationWarning
+    >
       <body className={`${geistSans.variable} font-sans min-h-screen flex flex-col`}>
         <LanguageProvider>
           <div className="flex min-h-screen flex-col">
