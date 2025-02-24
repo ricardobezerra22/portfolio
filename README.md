@@ -29,7 +29,7 @@ A sleek, responsive portfolio website built with Next.js 14, featuring dark them
 
 1. Clone the repository
 ```bash
-git clone https://github.com/yourusername/portfolio.git
+git clone https://github.com/ricardobezerra22/portfolio
 cd portfolio
 ```
 
